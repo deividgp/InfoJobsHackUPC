@@ -7,11 +7,11 @@ namespace InfoJobsHackUPC.Entities
 {
     public partial class SkillProfile
     {
-        public int IdSkill { get; set; }
+        public string nameSkill { get; set; }
 
         public int IdProfile { get; set; }
 
-        [ForeignKey("IDSkill")]
+        [ForeignKey("nameSkill")]
         [InverseProperty("SkillProfile_FKSkill")]
         public Skill FKSkill { get; set; }
 
@@ -29,10 +29,10 @@ namespace InfoJobsHackUPC.Entities
 
         public void Configure(EntityTypeBuilder<SkillProfile> entity)
         {
-            entity.HasKey(e => e.IdSkill);
+            entity.HasKey(e => e.nameSkill);
             entity.HasKey(e => e.IdProfile);
 
-            entity.HasIndex(e => e.IdSkill);
+            entity.HasIndex(e => e.nameSkill);
             entity.HasIndex(e => e.IdProfile);
         }
     }

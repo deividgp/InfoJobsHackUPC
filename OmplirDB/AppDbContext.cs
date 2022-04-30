@@ -13,7 +13,7 @@ namespace OmplirDB
         public DbSet<Lead> Leads { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Skill> Skill { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<SkillProfile> SkillProfiles { get; set; }
         public DbSet<UserSkill> UserSkills { get; set; }

@@ -10,7 +10,7 @@ namespace InfoJobsHackUPC.Entities
     {
         public int IdUser { get; set; }
 
-        public int IdSkill { get; set; }
+        public string IdSkill { get; set; }
 
         [ForeignKey("IdUser")]
         [InverseProperty("UserSkills_FKUser")]

@@ -14,7 +14,7 @@ namespace InfoJobsHackUPC.Entities
     public partial class Skill
     {
         [Required]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
 
         [InverseProperty("FKSkill")]
@@ -32,7 +32,7 @@ namespace InfoJobsHackUPC.Entities
 
         public void Configure(EntityTypeBuilder<Skill> entity)
         {
-            entity.HasKey(e => e.Id);
+            entity.HasKey(e => e.Name);
         }
     }
 }
