@@ -1,8 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace InfoJobsHackUPC.Entities
 {
@@ -19,6 +24,9 @@ namespace InfoJobsHackUPC.Entities
 
         [InverseProperty("FKUser")]
         public virtual ObservableCollection<UserSkill> UserSkills_FKUser { get; } = new ObservableCollection<UserSkill>();
+
+        [InverseProperty("FKUser")]
+        public virtual ObservableCollection<UserProfile> UserProfile_FKUser { get; } = new ObservableCollection<UserProfile>();
     }
 
     public partial class User_Config : IEntityTypeConfiguration<User>

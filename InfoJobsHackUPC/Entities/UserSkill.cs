@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+
 
 namespace InfoJobsHackUPC.Entities
 {

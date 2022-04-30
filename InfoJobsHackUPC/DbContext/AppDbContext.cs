@@ -29,6 +29,8 @@ namespace InfoJobsHackUPC
             modelBuilder.ApplyConfiguration(new User_Config());
             modelBuilder.ApplyConfiguration(new UserSkill_Config());
             modelBuilder.ApplyConfiguration(new Profile_Config());
+            modelBuilder.ApplyConfiguration(new SkillProfile_Config());
+            modelBuilder.ApplyConfiguration(new UserProfile_Config());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

@@ -19,6 +19,8 @@ namespace InfoJobsHackUPC.Entities
 
         [InverseProperty("FKSkill")]
         public virtual ObservableCollection<UserSkill> UserSkills_FKSkill { get; } = new ObservableCollection<UserSkill>();
+        [InverseProperty("FKSkill")]
+        public virtual ObservableCollection<SkillProfile> SkillProfile_FKSkill { get; } = new ObservableCollection<SkillProfile>();
     }
 
     public partial class Skill_Config : IEntityTypeConfiguration<Skill>
