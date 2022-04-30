@@ -1,6 +1,6 @@
 ﻿namespace InfoJobsHackUPC.Entities
 {
-    public class UserSkill
+    public partial class UserSkill
     {
 
     }
