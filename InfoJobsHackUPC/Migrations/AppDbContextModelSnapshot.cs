@@ -74,6 +74,113 @@ namespace InfoJobsHackUPC.Migrations
 
                     b.ToTable("Leads");
                 });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.Profile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Field")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.Skill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Skill");
+                });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Country")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Province")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.UserSkill", b =>
+                {
+                    b.Property<int>("IdSkill")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("IdUser")
+                        .HasColumnType("integer");
+
+                    b.HasKey("IdSkill");
+
+                    b.HasIndex("IdSkill");
+
+                    b.HasIndex("IdUser");
+
+                    b.ToTable("UserSkill");
+                });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.UserSkill", b =>
+                {
+                    b.HasOne("InfoJobsHackUPC.Entities.Skill", "FKSkill")
+                        .WithMany("UserSkills_FKSkill")
+                        .HasForeignKey("IdSkill")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InfoJobsHackUPC.Entities.User", "FKUser")
+                        .WithMany("UserSkills_FKUser")
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FKSkill");
+
+                    b.Navigation("FKUser");
+                });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.Skill", b =>
+                {
+                    b.Navigation("UserSkills_FKSkill");
+                });
+
+            modelBuilder.Entity("InfoJobsHackUPC.Entities.User", b =>
+                {
+                    b.Navigation("UserSkills_FKUser");
+                });
 #pragma warning restore 612, 618
         }
     }

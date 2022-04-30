@@ -10,7 +10,9 @@ namespace InfoJobsHackUPC
         protected readonly IConfiguration configuration;
 
         public DbSet<Lead> Leads { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        
         public AppDbContext(IConfiguration _configuration)
         {
             configuration = _configuration;
@@ -23,6 +25,10 @@ namespace InfoJobsHackUPC
             base.OnModelCreating(modelBuilder);
             // Aplica la configuració addicional de cada taula
             modelBuilder.ApplyConfiguration(new Leads_Config());
+            modelBuilder.ApplyConfiguration(new Skill_Config());
+            modelBuilder.ApplyConfiguration(new User_Config());
+            modelBuilder.ApplyConfiguration(new UserSkill_Config());
+            modelBuilder.ApplyConfiguration(new Profile_Config());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

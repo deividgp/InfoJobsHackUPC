@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InfoJobsHackUPC.Entities
 {
@@ -15,6 +17,8 @@ namespace InfoJobsHackUPC.Entities
         public string Province { get; set; }
         public string Country { get; set; }
 
+        [InverseProperty("FKUser")]
+        public virtual ObservableCollection<UserSkill> UserSkills_FKUser { get; } = new ObservableCollection<UserSkill>();
     }
 
     public partial class User_Config : IEntityTypeConfiguration<User>
