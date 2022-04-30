@@ -96,18 +96,15 @@ namespace InfoJobsHackUPC.Migrations
 
             modelBuilder.Entity("InfoJobsHackUPC.Entities.Skill", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
-                    b.ToTable("Skill");
+                    b.HasKey("Name");
+
+                    b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("InfoJobsHackUPC.Entities.SkillProfile", b =>
@@ -115,21 +112,17 @@ namespace InfoJobsHackUPC.Migrations
                     b.Property<int>("IdProfile")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("IDSkill")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("IdSkill")
-                        .HasColumnType("integer");
+                    b.Property<string>("NameSkill")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("IdProfile");
 
-                    b.HasIndex("IDSkill");
-
                     b.HasIndex("IdProfile");
 
-                    b.HasIndex("IdSkill");
+                    b.HasIndex("NameSkill");
 
-                    b.ToTable("SkillProfile");
+                    b.ToTable("SkillProfiles");
                 });
 
             modelBuilder.Entity("InfoJobsHackUPC.Entities.User", b =>
@@ -172,35 +165,37 @@ namespace InfoJobsHackUPC.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("UserProfile");
+                    b.ToTable("UserProfiles");
                 });
 
             modelBuilder.Entity("InfoJobsHackUPC.Entities.UserSkill", b =>
                 {
-                    b.Property<int>("IdSkill")
-                        .HasColumnType("integer");
+                    b.Property<string>("NameSkill")
+                        .HasColumnType("text");
 
                     b.Property<int>("IdUser")
                         .HasColumnType("integer");
 
-                    b.HasKey("IdSkill");
-
-                    b.HasIndex("IdSkill");
+                    b.HasKey("NameSkill");
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("UserSkill");
+                    b.HasIndex("NameSkill");
+
+                    b.ToTable("UserSkills");
                 });
 
             modelBuilder.Entity("InfoJobsHackUPC.Entities.SkillProfile", b =>
                 {
-                    b.HasOne("InfoJobsHackUPC.Entities.Skill", "FKSkill")
-                        .WithMany("SkillProfile_FKSkill")
-                        .HasForeignKey("IDSkill");
-
                     b.HasOne("InfoJobsHackUPC.Entities.Profile", "FKProfile")
                         .WithMany("SkillProfile_FKProfile")
                         .HasForeignKey("IdProfile")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InfoJobsHackUPC.Entities.Skill", "FKSkill")
+                        .WithMany("SkillProfile_FKSkill")
+                        .HasForeignKey("NameSkill")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -230,15 +225,15 @@ namespace InfoJobsHackUPC.Migrations
 
             modelBuilder.Entity("InfoJobsHackUPC.Entities.UserSkill", b =>
                 {
-                    b.HasOne("InfoJobsHackUPC.Entities.Skill", "FKSkill")
-                        .WithMany("UserSkills_FKSkill")
-                        .HasForeignKey("IdSkill")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("InfoJobsHackUPC.Entities.User", "FKUser")
                         .WithMany("UserSkills_FKUser")
                         .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InfoJobsHackUPC.Entities.Skill", "FKSkill")
+                        .WithMany("UserSkills_FKSkill")
+                        .HasForeignKey("NameSkill")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -6,11 +6,11 @@ using System.Data;
 using System.Text;
 using System.IO;
 
- var context = new AppDbContext();
+var context = new AppDbContext();
 
  void prova()
 {
-    DataTable tblcsv = new DataTable();  
+    DataTable tblcsv = new();  
     tblcsv.Columns.Add("ID");  
     tblcsv.Columns.Add("Orient");  
       
@@ -29,21 +29,19 @@ using System.IO;
                 count++;  
             } 
             if (tblcsv.Rows.Count -1 > 0){
-                Console.WriteLine(tblcsv.Rows[tblcsv.Rows.Count -1][0] );
+                //Console.WriteLine(tblcsv.Rows[tblcsv.Rows.Count -1][0] );
                 try{
                     context.Add(new Skill(){
                         Id =  Convert.ToInt64(tblcsv.Rows[tblcsv.Rows.Count - 1][0].ToString()),
                         Name = (string) tblcsv.Rows[tblcsv.Rows.Count - 1][1]
                     });
                     context.SaveChanges();
-                } catch (Exception e){
-                     Console.WriteLine("Potato");
+                } catch (Exception){
+                     //Console.WriteLine("Potato");
                 }
            }
         }    
     }
 }
     
-    prova();
-
-
+prova();

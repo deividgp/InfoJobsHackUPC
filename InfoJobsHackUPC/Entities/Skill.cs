@@ -14,8 +14,10 @@ namespace InfoJobsHackUPC.Entities
     public partial class Skill
     {
         [Required]
-        public long Id { get; set; }
         public string Name { get; set; }
+        [Required]
+        public long Id { get; set; }
+        
 
         [InverseProperty("FKSkill")]
         public virtual ObservableCollection<UserSkill> UserSkills_FKSkill { get; } = new ObservableCollection<UserSkill>();

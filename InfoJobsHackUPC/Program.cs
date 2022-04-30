@@ -8,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
+// Add Telerik Blazor server side services
+builder.Services.AddTelerikBlazor();
+
+
 builder.Services.AddDbContext<AppDbContext>();
 
 var app = builder.Build();
