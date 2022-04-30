@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoJobsHackUPC", "InfoJobsHackUPC\InfoJobsHackUPC.csproj", "{E59529E7-AF16-4382-A24F-22AC4D1B751B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmplirDB", "OmplirDB\OmplirDB.csproj", "{9D9BD0E3-1AC0-4F7B-AFA6-1ADE539C005A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E59529E7-AF16-4382-A24F-22AC4D1B751B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E59529E7-AF16-4382-A24F-22AC4D1B751B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E59529E7-AF16-4382-A24F-22AC4D1B751B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D9BD0E3-1AC0-4F7B-AFA6-1ADE539C005A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D9BD0E3-1AC0-4F7B-AFA6-1ADE539C005A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D9BD0E3-1AC0-4F7B-AFA6-1ADE539C005A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D9BD0E3-1AC0-4F7B-AFA6-1ADE539C005A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

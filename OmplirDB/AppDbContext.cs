@@ -1,14 +1,15 @@
 ﻿using InfoJobsHackUPC.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace InfoJobsHackUPC
+namespace OmplirDB
 {
     public class AppDbContext : DbContext
     {
-        protected readonly IConfiguration configuration;
-
         public DbSet<Lead> Leads { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
@@ -16,11 +17,6 @@ namespace InfoJobsHackUPC
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<SkillProfile> SkillProfiles { get; set; }
         public DbSet<UserSkill> UserSkills { get; set; }
-
-        public AppDbContext(IConfiguration _configuration)
-        {
-            configuration = _configuration;
-        }
 
         // Aquest mètode permet aplicar la configuració addicional de la base de dades i de les taules
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,7 +35,7 @@ namespace InfoJobsHackUPC
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"));
+            options.UseNpgsql("Server=127.0.0.1;Port=5432;Database=InfoJobs;User Id=postgres;Password=contra87;");
         }
     }
 }
